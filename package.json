@@ -1,0 +1,24 @@
+{
+  "name": "tiny-timer",
+  "version": "1.0.0",
+  "description": "Small countdown timer and stopwatch module.",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "keywords": [
+    "countdown",
+    "stopwatch",
+    "timer"
+  ],
+  "author": "Mathias Rasmussen <mathiasvr@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathiasvr/tiny-timer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mathiasvr/tiny-timer/issues"
+  },
+  "homepage": "https://github.com/mathiasvr/tiny-timer#readme"
+}
