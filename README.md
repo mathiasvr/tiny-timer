@@ -18,24 +18,18 @@ npm install tiny-timer
 ```javascript
 const Timer = require('tiny-timer')
 
-let timer = new Timer({ interval: 200 })
+let timer = new Timer()
 
 timer.on('tick', (ms) => console.log('tick', ms))
 timer.on('done', () => console.log('done!'))
 
-timer.start(3000) // run for 3 seconds
+timer.start(5000) // run for 5 seconds
 ```
 
 # usage
 
-## `timer = new Timer([options])`
-Optional `options`:
-```javascript
-{
-  interval: Number,   // refresh interval in ms
-  stopwatch: Boolean  // stopwatch mode, default is countdown
-}
-```
+## `timer = new Timer([{ interval: 1000, stopwatch: false }])`
+Optionally set the refresh `interval` in ms, or `stopwatch` mode instead of countdown.
 
 ### `timer.start(duration)` {
 Starts timer running for a `duration` specified in ms.
