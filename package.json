@@ -1,6 +1,6 @@
 {
   "name": "tiny-timer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small countdown timer and stopwatch module.",
   "main": "index.js",
   "scripts": {
