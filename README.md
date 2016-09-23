@@ -1,5 +1,7 @@
-# tiny-timer [![dependencies][dep-img]][dep-url] [![license][lic-img]][lic-url]
+# tiny-timer [![npm][npm-img]][npm-url] [![dependencies][dep-img]][dep-url] [![license][lic-img]][lic-url]
 
+[npm-img]: https://img.shields.io/npm/v/tiny-timer.svg
+[npm-url]: https://www.npmjs.com/package/tiny-timer
 [dep-img]: https://david-dm.org/mathiasvr/tiny-timer.svg
 [dep-url]: https://david-dm.org/mathiasvr/tiny-timer
 [lic-img]: http://img.shields.io/:license-MIT-blue.svg
