@@ -4,7 +4,7 @@
   "description": "Small countdown timer and stopwatch module.",
   "main": "index.js",
   "scripts": {
-    "test": "standard"
+    "test": "tape test.js && standard"
   },
   "keywords": [
     "countdown",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/mathiasvr/tiny-timer/issues"
   },
-  "homepage": "https://github.com/mathiasvr/tiny-timer#readme"
+  "homepage": "https://github.com/mathiasvr/tiny-timer#readme",
+  "devDependencies": {
+    "tape": "^4.6.0"
+  }
 }
