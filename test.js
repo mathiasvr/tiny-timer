@@ -133,3 +133,17 @@ test('time property', function (t) {
     timer.resume()
   }, 20)
 })
+
+test('override interval', function (t) {
+  let timer = new Timer({ interval: 1000 })
+  let ticks = 0
+
+  timer.on('tick', (ms) => ticks++)
+
+  timer.on('done', (ms) => {
+    t.ok(ticks > 5, 'should do extra tick events')
+    t.end()
+  })
+
+  timer.start(100, 10)
+})
