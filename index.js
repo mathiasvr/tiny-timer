@@ -53,8 +53,8 @@ class Timer extends EventEmitter {
 
   get time () {
     if (this._status === 'stopped') return 0
-    if (this._status === 'paused') return this._endTime - this._pauseTime
-    let left = this._endTime - Date.now()
+    let time = this._status === 'paused' ? this._pauseTime : Date.now()
+    let left = this._endTime - time
     return this._stopwatch ? this._duration - left : left
   }
 

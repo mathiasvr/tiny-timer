@@ -112,26 +112,39 @@ test('duration property', function (t) {
 })
 
 test('time property', function (t) {
-  let timer = new Timer({ interval: 10 })
-  timer.on('tick', (ms) => {
-    let time = timer.time
-    t.ok(time > ms - 5 && time < ms + 5, 'time should be around the ms param')
-  })
+  let run = function (stopwatch) {
+    let timer = new Timer({ interval: 10, stopwatch: stopwatch })
+    timer.on('tick', (ms) => {
+      let time = timer.time
+      // TODO: last ms and time is not equal in stopwatch mode
+      //       because we stop the timer before calling tick to ensure
+      //       that .time won't be less than 0 or greater than duration
+      if (stopwatch && ms === 50) return
+      t.ok(time > ms - 5 && time < ms + 5, 'time should be around the ms param')
+    })
 
-  timer.on('done', () => {
+    timer.on('done', () => {
+      t.equal(timer.time, 0)
+      if (stopwatch) t.end()
+    })
+
     t.equal(timer.time, 0)
-    t.end()
-  })
+    timer.start(50)
 
-  t.equal(timer.time, 0)
-  timer.start(50)
-  t.ok(timer.time > 0)
-  timer.pause()
-  let ptime = timer.time
-  setTimeout(() => {
-    t.equal(ptime, timer.time)
-    timer.resume()
-  }, 20)
+    let rtime = timer.time
+    timer.pause()
+    let ptime = timer.time
+
+    t.equal(rtime, ptime)
+
+    setTimeout(() => {
+      t.equal(ptime, timer.time)
+      timer.resume()
+    }, 20)
+  }
+
+  run(false)
+  run(true)
 })
 
 test('override interval', function (t) {
