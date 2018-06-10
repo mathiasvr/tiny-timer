@@ -1,0 +1,5 @@
+.travis.yml
+.editorconfig
+test.js
+.idea/
+__tests__/
