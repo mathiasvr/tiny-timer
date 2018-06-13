@@ -7,10 +7,8 @@
   "scripts": {
     "clean:dist": "del-cli dist/* !dist/.gitkeep",
     "build": "npm run clean:dist && bili",
-    "pretest": "npm run build",
     "prepublish": "npm run build",
-    "test": "tape test.js && standard",
-    "lint": "eslint ."
+    "test": "tape test.js && standard"
   },
   "keywords": [
     "countdown",
