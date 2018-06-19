@@ -1,4 +1,4 @@
-const EventEmitter = require('events')
+import EventEmitter from 'events'
 
 function tick () {
   if (this._status === 'paused') return
@@ -12,10 +12,10 @@ function tick () {
 }
 
 class Timer extends EventEmitter {
-  constructor (options) {
+  constructor ({ interval = 1000, stopwatch = false } = {}) {
     super()
-    this._interval = options && options.interval || 1000
-    this._stopwatch = options && options.stopwatch || false
+    this._interval = interval
+    this._stopwatch = stopwatch
     this._endTime = 0
     this._pauseTime = 0
     this._duration = null
@@ -67,4 +67,4 @@ class Timer extends EventEmitter {
   }
 }
 
-module.exports = Timer
+export default Timer

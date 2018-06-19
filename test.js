@@ -1,8 +1,8 @@
-let test = require('tape')
-let Timer = require('./src/index')
+const test = require('tape')
+const Timer = require('.')
 
 test('countdown ticks', { timeout: 500 }, function (t) {
-  let timer = new Timer({ interval: 10 })
+  const timer = new Timer({ interval: 10 })
   let lastms = 51
 
   timer.on('tick', (ms) => {
@@ -20,7 +20,7 @@ test('countdown ticks', { timeout: 500 }, function (t) {
 })
 
 test('stopwatch ticks', { timeout: 500 }, function (t) {
-  let timer = new Timer({ interval: 10, stopwatch: true })
+  const timer = new Timer({ interval: 10, stopwatch: true })
   let lastms = -1
 
   timer.on('tick', (ms) => {
@@ -38,7 +38,7 @@ test('stopwatch ticks', { timeout: 500 }, function (t) {
 })
 
 test('stop', function (t) {
-  let timer = new Timer({ interval: 10 })
+  const timer = new Timer({ interval: 10 })
 
   timer.on('done', () => t.fail())
 
@@ -53,8 +53,8 @@ test('stop', function (t) {
 })
 
 test('pause and resume', function (t) {
-  let timer = new Timer({ interval: 10 })
-  let startTime = Date.now()
+  const timer = new Timer({ interval: 10 })
+  const startTime = Date.now()
 
   timer.on('done', () => {
     t.ok(Date.now() - startTime > 100, 'paused for at least 100ms')
@@ -72,7 +72,7 @@ test('pause and resume', function (t) {
 })
 
 test('state transition', function (t) {
-  let timer = new Timer({ interval: 10 })
+  const timer = new Timer({ interval: 10 })
   t.equal(timer.status, 'stopped')
   timer.stop()
   t.equal(timer.status, 'stopped')
@@ -101,7 +101,7 @@ test('state transition', function (t) {
 })
 
 test('duration property', function (t) {
-  let timer = new Timer({ interval: 10 })
+  const timer = new Timer({ interval: 10 })
   timer.on('done', () => {
     t.equal(timer.duration, 50, 'correct last duration')
     t.end()
@@ -112,10 +112,10 @@ test('duration property', function (t) {
 })
 
 test('time property', function (t) {
-  let run = function (stopwatch) {
-    let timer = new Timer({ interval: 10, stopwatch: stopwatch })
+  const run = function (stopwatch) {
+    const timer = new Timer({ interval: 10, stopwatch: stopwatch })
     timer.on('tick', (ms) => {
-      let time = timer.time
+      const time = timer.time
       // TODO: last ms and time is not equal in stopwatch mode
       //       because we stop the timer before calling tick to ensure
       //       that .time won't be less than 0 or greater than duration
@@ -131,9 +131,9 @@ test('time property', function (t) {
     t.equal(timer.time, 0)
     timer.start(50)
 
-    let rtime = timer.time
+    const rtime = timer.time
     timer.pause()
-    let ptime = timer.time
+    const ptime = timer.time
 
     t.equal(rtime, ptime)
 
@@ -148,7 +148,7 @@ test('time property', function (t) {
 })
 
 test('override interval', function (t) {
-  let timer = new Timer({ interval: 1000 })
+  const timer = new Timer({ interval: 1000 })
   let ticks = 0
 
   timer.on('tick', (ms) => ticks++)
