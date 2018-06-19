@@ -1,5 +1,5 @@
 let test = require('tape')
-let Timer = require('.')
+let Timer = require('./src/index')
 
 test('countdown ticks', { timeout: 500 }, function (t) {
   let timer = new Timer({ interval: 10 })
