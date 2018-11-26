@@ -22,7 +22,7 @@ let timer = new Timer()
 
 timer.on('tick', (ms) => console.log('tick', ms))
 timer.on('done', () => console.log('done!'))
-
+timer.on('onChangeStatus', (status) => console.log('status:', status))
 timer.start(5000) // run for 5 seconds
 ```
 
@@ -51,6 +51,9 @@ Event emitted every `interval` with the current time in ms.
 
 ### `timer.on('done', () => {})`
 Event emitted when the timer reaches the `duration` set by calling `timer.start()`.
+
+### `timer.on('onChangeStatus', (status) => {})`
+Event emitted when the timer status changes.
 
 ## properties
 
