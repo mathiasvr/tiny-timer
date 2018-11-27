@@ -5,7 +5,7 @@
   "main": "dist/tiny-timer.cjs.js",
   "module": "dist/tiny-timer.es.js",
   "scripts": {
-    "clean:dist": "del-cli dist/* !dist/.gitkeep",
+    "clean:dist": "del-cli dist/*",
     "build": "npm run clean:dist && bili",
     "prepublish": "npm run build",
     "test": "standard && tape test.js"

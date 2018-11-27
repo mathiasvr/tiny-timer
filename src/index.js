@@ -50,7 +50,7 @@ class Timer extends EventEmitter {
     this._pauseTime = 0
     this._changeStatus('running')
   }
-  
+
   _changeStatus (status) {
     this._status = status
     this.emit('statusChanged', this._status)

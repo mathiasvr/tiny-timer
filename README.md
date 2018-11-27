@@ -11,7 +11,7 @@ Small countdown timer and stopwatch module.
 
 ## install
 ```bash
-npm install tiny-timer
+$ npm install tiny-timer
 ```
 
 ## example
@@ -33,7 +33,7 @@ Optionally set the refresh `interval` in ms, or `stopwatch` mode instead of coun
 
 ### `timer.start(duration [, interval])` {
 Starts timer running for a `duration` specified in ms.
-Optionally overide the default refresh `interval` in ms.
+Optionally override the default refresh `interval` in ms.
 
 ### `timer.stop()`
 Stops timer.
