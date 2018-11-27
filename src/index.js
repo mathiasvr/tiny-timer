@@ -1,13 +1,7 @@
 import EventEmitter from 'events'
 
-const status = {
-  _stopped: 'stopped',
-  _running: 'running',
-  _paused: 'paused'
-}
-
 function tick () {
-  if (this._status === status._paused) return
+  if (this._status === 'paused') return
   if (Date.now() >= this._endTime) {
     this.stop()
     this.emit('tick', this._stopwatch ? this._duration : 0)
@@ -26,45 +20,45 @@ class Timer extends EventEmitter {
     this._pauseTime = 0
     this._duration = null
     this._timeoutID = null
-    this._status = status._stopped // 'running' or 'paused'
+    this._status = 'stopped' // 'running' or 'paused'
   }
 
   start (duration, interval) {
-    if (this._status !== status._stopped) return
+    if (this._status !== 'stopped') return
     if (duration == null) throw new TypeError('must provide duration parameter')
     this._duration = duration
     this._endTime = Date.now() + duration
-    this.changeStatus(status._running)
+    this._changeStatus('running')
     this.emit('tick', this._stopwatch ? 0 : this._duration)
     this._timeoutID = setInterval(tick.bind(this), interval || this._interval)
   }
 
   stop () {
     clearInterval(this._timeoutID)
-    this.changeStatus(status._stopped)
+    this._changeStatus('stopped')
   }
 
   pause () {
-    if (this._status !== status._running) return
+    if (this._status !== 'running') return
     this._pauseTime = Date.now()
-    this.changeStatus(status._paused)
+    this._changeStatus('paused')
   }
 
   resume () {
-    if (this._status !== status._paused) return
+    if (this._status !== 'paused') return
     this._endTime += Date.now() - this._pauseTime
     this._pauseTime = 0
-    this.changeStatus(status._running)
+    this._changeStatus('running')
   }
   
-  changeStatus (status) {
+  _changeStatus (status) {
     this._status = status
-    this.emit('onChangeStatus', this._status)
+    this.emit('statusChanged', this._status)
   }
 
   get time () {
-    if (this._status === status._stopped) return 0
-    let time = this._status === status._paused ? this._pauseTime : Date.now()
+    if (this._status === 'stopped') return 0
+    let time = this._status === 'paused' ? this._pauseTime : Date.now()
     let left = this._endTime - time
     return this._stopwatch ? this._duration - left : left
   }
