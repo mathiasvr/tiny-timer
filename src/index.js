@@ -28,27 +28,32 @@ class Timer extends EventEmitter {
     if (duration == null) throw new TypeError('must provide duration parameter')
     this._duration = duration
     this._endTime = Date.now() + duration
-    this._status = 'running'
+    this._changeStatus('running')
     this.emit('tick', this._stopwatch ? 0 : this._duration)
     this._timeoutID = setInterval(tick.bind(this), interval || this._interval)
   }
 
   stop () {
     clearInterval(this._timeoutID)
-    this._status = 'stopped'
+    this._changeStatus('stopped')
   }
 
   pause () {
     if (this._status !== 'running') return
     this._pauseTime = Date.now()
-    this._status = 'paused'
+    this._changeStatus('paused')
   }
 
   resume () {
     if (this._status !== 'paused') return
     this._endTime += Date.now() - this._pauseTime
     this._pauseTime = 0
-    this._status = 'running'
+    this._changeStatus('running')
+  }
+  
+  _changeStatus (status) {
+    this._status = status
+    this.emit('statusChanged', this._status)
   }
 
   get time () {
