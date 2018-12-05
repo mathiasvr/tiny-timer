@@ -28,7 +28,7 @@ timer.start(5000) // run for 5 seconds
 
 # usage
 
-## `timer = new Timer([{ interval: 1000, stopwatch: false }])`
+## `timer = new Timer({ interval: 1000, stopwatch: false })`
 Optionally set the refresh `interval` in ms, or `stopwatch` mode instead of countdown.
 
 ### `timer.start(duration [, interval])` {
