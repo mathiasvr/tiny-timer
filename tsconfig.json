@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es2015",
+    "declaration": true,
+    "outDir": "dist-ts/",
+    "strict": true,
+    "noImplicitAny": true
+  },
+  "exclude": [
+    "node_modules/"
+  ],
+  "include": [
+    "./src/**/*"
+  ],
+}
