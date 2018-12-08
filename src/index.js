@@ -25,7 +25,7 @@ class Timer extends EventEmitter {
 
   start (duration, interval) {
     if (this._status !== 'stopped') return
-    if (duration == null) throw new TypeError('must provide duration parameter')
+    if (duration == null) throw new TypeError('Must provide duration parameter')
     this._duration = duration
     this._endTime = Date.now() + duration
     this._changeStatus('running')

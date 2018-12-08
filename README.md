@@ -1,16 +1,14 @@
-# tiny-timer [![npm][npm-img]][npm-url] [![dependencies][dep-img]][dep-url] [![license][lic-img]][lic-url]
+# tiny-timer
 
-[npm-img]: https://img.shields.io/npm/v/tiny-timer.svg
-[npm-url]: https://www.npmjs.com/package/tiny-timer
-[dep-img]: https://david-dm.org/mathiasvr/tiny-timer.svg
-[dep-url]: https://david-dm.org/mathiasvr/tiny-timer
-[lic-img]: http://img.shields.io/:license-MIT-blue.svg
-[lic-url]: http://mvr.mit-license.org
+[![npm](https://img.shields.io/npm/v/tiny-timer.svg)](https://npm.im/tiny-timer)
+![downloads](https://img.shields.io/npm/dt/tiny-timer.svg)
+[![dependencies](https://david-dm.org/mathiasvr/tiny-timer.svg)](https://david-dm.org/mathiasvr/tiny-timer)
+[![license](https://img.shields.io/:license-MIT-blue.svg)](https://mvr.mit-license.org)
 
 Small countdown timer and stopwatch module.
 
 ## install
-```bash
+```shell
 $ npm install tiny-timer
 ```
 
@@ -18,11 +16,12 @@ $ npm install tiny-timer
 ```javascript
 const Timer = require('tiny-timer')
 
-let timer = new Timer()
+const timer = new Timer()
 
 timer.on('tick', (ms) => console.log('tick', ms))
 timer.on('done', () => console.log('done!'))
 timer.on('statusChanged', (status) => console.log('status:', status))
+
 timer.start(5000) // run for 5 seconds
 ```
 
