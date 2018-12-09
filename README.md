@@ -7,12 +7,17 @@
 
 Small countdown timer and stopwatch module.
 
-## install
+## Installation
+npm:
 ```shell
-$ npm install tiny-timer
+$ npm install --save tiny-timer
+```
+Yarn:
+```shell
+$ yarn add tiny-timer
 ```
 
-## example
+## Example
 ```javascript
 const Timer = require('tiny-timer')
 
@@ -25,9 +30,9 @@ timer.on('statusChanged', (status) => console.log('status:', status))
 timer.start(5000) // run for 5 seconds
 ```
 
-# usage
+## Usage
 
-## `timer = new Timer({ interval: 1000, stopwatch: false })`
+### `timer = new Timer({ interval: 1000, stopwatch: false })`
 Optionally set the refresh `interval` in ms, or `stopwatch` mode instead of countdown.
 
 ### `timer.start(duration [, interval])` {
@@ -43,7 +48,7 @@ Pauses timer.
 ### `timer.resume()`
 Resumes timer.
 
-## events
+## Events
 
 ### `timer.on('tick', (ms) => {})`
 Event emitted every `interval` with the current time in ms.
@@ -54,7 +59,7 @@ Event emitted when the timer reaches the `duration` set by calling `timer.start(
 ### `timer.on('statusChanged', (status) => {})`
 Event emitted when the timer status changes.
 
-## properties
+## Properties
 
 ### `timer.time`
 Gets the current time in ms.
