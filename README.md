@@ -10,7 +10,7 @@ Small countdown timer and stopwatch module.
 ## Installation
 npm:
 ```shell
-$ npm install --save tiny-timer
+$ npm install tiny-timer
 ```
 Yarn:
 ```shell
