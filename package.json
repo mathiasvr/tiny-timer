@@ -2,13 +2,14 @@
   "name": "tiny-timer",
   "version": "1.3.0",
   "description": "Small countdown timer and stopwatch module.",
-  "main": "dist/tiny-timer.cjs.js",
-  "module": "dist/tiny-timer.es.js",
+  "main": "dist/tiny-timer.js",
+  "module": "dist/tiny-timer.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "clean:dist": "del-cli dist/*",
-    "build": "npm run clean:dist && bili",
+    "build": "rimraf dist/* && microbundle --target=node --format=es,cjs --external=events",
+    "build-ts": "rimraf dist/* && tsc",
     "prepublish": "npm run build",
-    "test": "standard src/*.js && tape test.js"
+    "test": "tape test.js"
   },
   "keywords": [
     "countdown",
@@ -30,10 +31,10 @@
   "homepage": "https://github.com/mathiasvr/tiny-timer#readme",
   "devDependencies": {
     "@types/node": "^10.12.12",
-    "bili": "^3.1.2",
-    "del-cli": "^1.1.0",
-    "standard": "*",
-    "tape": "^4.6.0"
+    "microbundle": "^0.8.3",
+    "rimraf": "^2.6.2",
+    "tape": "^4.6.0",
+    "typescript": "^3.2.2"
   },
   "dependencies": {},
   "files": [
