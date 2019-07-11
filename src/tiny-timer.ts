@@ -17,7 +17,7 @@ class Timer extends EventEmitter {
     this._stopwatch = stopwatch
   }
 
-  public start (duration: number, interval: number) {
+  public start (duration: number, interval?: number) {
     if (this.status !== 'stopped') return
     if (duration == null) throw new TypeError('Must provide duration parameter')
     this._duration = duration
