@@ -1,7 +1,10 @@
-const test = require('tape')
-const Timer = require('.')
+// NOTE: This is mostly the same as test.js,
+//       but is included to test TypeScript type errors.
 
-test('countdown ticks', { timeout: 500 }, function (t) {
+import test from 'tape'
+import Timer from '.'
+
+test('countdown ticks', { timeout: 500 }, (t) => {
   const timer = new Timer({ interval: 10 })
   let lastms = 51
 
@@ -19,7 +22,7 @@ test('countdown ticks', { timeout: 500 }, function (t) {
   timer.start(50)
 })
 
-test('stopwatch ticks', { timeout: 500 }, function (t) {
+test('stopwatch ticks', { timeout: 500 }, (t) => {
   const timer = new Timer({ interval: 10, stopwatch: true })
   let lastms = -1
 
@@ -37,7 +40,7 @@ test('stopwatch ticks', { timeout: 500 }, function (t) {
   timer.start(50)
 })
 
-test('stop', function (t) {
+test('stop', (t) => {
   const timer = new Timer({ interval: 10 })
 
   timer.on('done', () => t.fail())
@@ -52,7 +55,7 @@ test('stop', function (t) {
   timer.stop()
 })
 
-test('pause and resume', function (t) {
+test('pause and resume', (t) => {
   const timer = new Timer({ interval: 10 })
   const startTime = Date.now()
 
@@ -71,7 +74,7 @@ test('pause and resume', function (t) {
   timer.pause()
 })
 
-test('state transition', function (t) {
+test('state transition', (t) => {
   const timer = new Timer({ interval: 10 })
   t.equal(timer.status, 'stopped')
   timer.stop()
@@ -100,7 +103,7 @@ test('state transition', function (t) {
   })
 })
 
-test('duration property', function (t) {
+test('duration property', (t) => {
   const timer = new Timer({ interval: 10 })
   timer.on('done', () => {
     t.equal(timer.duration, 50, 'correct last duration')
@@ -111,9 +114,9 @@ test('duration property', function (t) {
   t.equal(timer.duration, 50, 'correct duration')
 })
 
-test('time property', function (t) {
-  const run = function (stopwatch) {
-    const timer = new Timer({ interval: 10, stopwatch: stopwatch })
+test('time property', (t) => {
+  const run = (stopwatch: boolean) => {
+    const timer = new Timer({ interval: 10, stopwatch })
     timer.on('tick', (ms) => {
       const time = timer.time
       // TODO: last ms and time is not equal in stopwatch mode
@@ -147,7 +150,7 @@ test('time property', function (t) {
   run(true)
 })
 
-test('override interval', function (t) {
+test('override interval', (t) => {
   const timer = new Timer({ interval: 1000 })
   let ticks = 0
 
@@ -159,10 +162,4 @@ test('override interval', function (t) {
   })
 
   timer.start(100, 10)
-})
-
-test('argument errors', function (t) {
-  const timer = new Timer()
-  t.throws(() => timer.start(), TypeError, 'Throw TypeError')
-  t.end()
 })
