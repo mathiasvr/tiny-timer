@@ -1,6 +1,7 @@
 # tiny-timer
 
 [![npm](https://img.shields.io/npm/v/tiny-timer.svg)](https://npm.im/tiny-timer)
+[![Build Status](https://travis-ci.com/mathiasvr/tiny-timer.svg?branch=master)](https://travis-ci.com/mathiasvr/tiny-timer)
 ![downloads](https://img.shields.io/npm/dt/tiny-timer.svg)
 [![dependencies](https://david-dm.org/mathiasvr/tiny-timer.svg)](https://david-dm.org/mathiasvr/tiny-timer)
 [![license](https://img.shields.io/:license-MIT-blue.svg)](https://mvr.mit-license.org)
