@@ -8,7 +8,7 @@
     "clean:dist": "del-cli dist/*",
     "build": "npm run clean:dist && bili",
     "prepublish": "npm run build",
-    "test": "standard && tape test.js"
+    "test": "standard src/*.js && tape test.js"
   },
   "keywords": [
     "countdown",
