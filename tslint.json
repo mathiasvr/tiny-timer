@@ -1,0 +1,13 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "rules": {
+        "semicolon": [true, "never"],
+        "quotemark": [true, "single"],
+        "curly": [true, "ignore-same-line"],
+        "space-before-function-paren": [true, "always"],
+        "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
+    }
+}
