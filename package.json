@@ -11,6 +11,7 @@
     "test": "npm run lint && tape test.js && npm run test-ts",
     "test-ts": "ts-node -O '{\"esModuleInterop\": true, \"module\": \"commonjs\"}' test-ts.ts",
     "lint": "tslint --project .",
+    "update-contributors": "git-authors-cli",
     "prepare": "npm run build",
     "prepublishOnly": "npm test"
   },
@@ -21,7 +22,9 @@
   ],
   "author": "Mathias Rasmussen <mathiasvr@gmail.com>",
   "contributors": [
-    "Marinko Peso <marinko.peso@gmail.com> (http://github.com/marinko-peso/)"
+    "Mathias Rasmussen <mathiasvr@gmail.com>",
+    "Jaisa Ram <jbbpatel94@gmail.com>",
+    "Marinko Pešo <marinko.peso@gmail.com>"
   ],
   "license": "MIT",
   "repository": {
@@ -33,8 +36,9 @@
   },
   "homepage": "https://github.com/mathiasvr/tiny-timer#readme",
   "devDependencies": {
-    "@types/node": "^12.6.2",
+    "@types/node": "^12.6.8",
     "@types/tape": "^4.2.33",
+    "git-authors-cli": "^1.0.18",
     "microbundle": "^0.11.0",
     "rimraf": "^2.6.3",
     "tape": "^4.11.0",
