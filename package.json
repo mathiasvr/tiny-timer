@@ -46,7 +46,9 @@
     "tslint": "^6.1.2",
     "typescript": "^3.9.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "events": "^3.2.0"
+  },
   "files": [
     "dist"
   ]
