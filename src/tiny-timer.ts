@@ -54,7 +54,7 @@ class Timer extends EventEmitter {
     if (this.status === 'paused') return
     if (Date.now() >= this._endTime) {
       this.stop()
-      this.emit('tick', this._stopwatch ? this._duration : 0)
+      this.emit('tick', this._stopwatch ? 0 : this._duration)
       this.emit('done')
     } else {
       this.emit('tick', this.time)
