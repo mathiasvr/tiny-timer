@@ -1,6 +1,6 @@
 {
   "name": "tiny-timer",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Small countdown timer and stopwatch module.",
   "source": "src/tiny-timer.ts",
   "main": "dist/tiny-timer.js",
