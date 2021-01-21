@@ -1,8 +1,8 @@
-import { EventEmitter } from 'events'
+import mitt from 'mitt'
 
 type Status = 'running' | 'paused' | 'stopped'
 
-class Timer extends EventEmitter {
+class Timer {
   private _interval: number
   private _stopwatch: boolean
   private _duration: number = 0
@@ -10,16 +10,18 @@ class Timer extends EventEmitter {
   private _pauseTime: number = 0
   private _status: Status = 'stopped'
   private _timeoutID?: NodeJS.Timeout
+  private _emitter: any = mitt()
 
   constructor ({ interval = 1000, stopwatch = false } = {}) {
-    super()
     this._interval = interval
     this._stopwatch = stopwatch
   }
 
   public start (duration: number, interval?: number) {
     if (this.status !== 'stopped') return
-    if (duration == null) throw new TypeError('Must provide duration parameter')
+    if (duration == null) {
+      throw new TypeError('Must provide duration parameter')
+    }
     this._duration = duration
     this._endTime = Date.now() + duration
     this._changeStatus('running')
@@ -74,6 +76,26 @@ class Timer extends EventEmitter {
 
   get status () {
     return this._status
+  }
+
+  // events logic
+  /**
+   * emit
+   */
+  private emit (...params: any[]) {
+    this._emitter.emit(...params)
+  }
+  /**
+   * ont
+   */
+  public on (eventName: string, handler: (...param: any[]) => any) {
+    this._emitter.on(eventName, handler)
+  }
+  /**
+   * off
+   */
+  public off (eventName: string, handler: (...param: any[]) => any) {
+    this._emitter.off(eventName, handler)
   }
 }
 
