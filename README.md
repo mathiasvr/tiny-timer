@@ -1,10 +1,10 @@
 # tiny-timer
 
-[![npm](https://img.shields.io/npm/v/tiny-timer.svg)](https://npm.im/tiny-timer)
-[![Build Status](https://travis-ci.com/mathiasvr/tiny-timer.svg?branch=master)](https://travis-ci.com/mathiasvr/tiny-timer)
-![downloads](https://img.shields.io/npm/dt/tiny-timer.svg)
-[![dependencies](https://david-dm.org/mathiasvr/tiny-timer.svg)](https://david-dm.org/mathiasvr/tiny-timer)
-[![license](https://img.shields.io/:license-MIT-blue.svg)](https://mvr.mit-license.org)
+[![npm](https://img.shields.io/npm/v/tiny-timer?style=for-the-badge)](https://npm.im/tiny-timer)
+[![Build Status](https://img.shields.io/travis/com/mathiasvr/tiny-timer?style=for-the-badge)](https://travis-ci.com/mathiasvr/tiny-timer)
+![Dependency status](https://img.shields.io/librariesio/release/npm/tiny-timer?style=for-the-badge)
+![downloads](https://img.shields.io/npm/dt/tiny-timer?style=for-the-badge)
+[![license](https://img.shields.io/:license-MIT-blue?style=for-the-badge)](https://mvr.mit-license.org)
 
 Small countdown timer and stopwatch module.
 
