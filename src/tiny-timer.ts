@@ -1,4 +1,4 @@
-import mitt from 'mitt'
+import mitt, { EventType, Handler } from 'mitt'
 
 type Status = 'running' | 'paused' | 'stopped'
 
@@ -10,7 +10,7 @@ class Timer {
   private _pauseTime: number = 0
   private _status: Status = 'stopped'
   private _timeoutID?: NodeJS.Timeout
-  private _emitter: any = mitt()
+  private _emitter = mitt()
 
   constructor ({ interval = 1000, stopwatch = false } = {}) {
     this._interval = interval
@@ -25,7 +25,7 @@ class Timer {
     this._duration = duration
     this._endTime = Date.now() + duration
     this._changeStatus('running')
-    this.emit('tick', this._stopwatch ? 0 : this._duration)
+    this._emitter.emit('tick', this._stopwatch ? 0 : this._duration)
     this._timeoutID = setInterval(this.tick, interval || this._interval)
   }
 
@@ -49,17 +49,17 @@ class Timer {
 
   private _changeStatus (status: Status) {
     this._status = status
-    this.emit('statusChanged', this.status)
+    this._emitter.emit('statusChanged', this.status)
   }
 
   private tick = () => {
     if (this.status === 'paused') return
     if (Date.now() >= this._endTime) {
       this.stop()
-      this.emit('tick', this._stopwatch ? this._duration : 0)
-      this.emit('done')
+      this._emitter.emit('tick', this._stopwatch ? this._duration : 0)
+      this._emitter.emit('done')
     } else {
-      this.emit('tick', this.time)
+      this._emitter.emit('tick', this.time)
     }
   }
 
@@ -78,23 +78,11 @@ class Timer {
     return this._status
   }
 
-  // events logic
-  /**
-   * emit
-   */
-  private emit (...params: any[]) {
-    this._emitter.emit(...params)
-  }
-  /**
-   * ont
-   */
-  public on (eventName: string, handler: (...param: any[]) => any) {
+  public on (eventName: EventType, handler: Handler<any>) {
     this._emitter.on(eventName, handler)
   }
-  /**
-   * off
-   */
-  public off (eventName: string, handler: (...param: any[]) => any) {
+
+  public off (eventName: EventType, handler: Handler<any>) {
     this._emitter.off(eventName, handler)
   }
 }
