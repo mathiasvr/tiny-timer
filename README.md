@@ -49,6 +49,9 @@ Pauses timer.
 ### `timer.resume()`
 Resumes timer.
 
+### `timer.restart()`
+Restarts timer.
+
 ## Events
 
 ### `timer.on('tick', (ms) => {})`
@@ -69,4 +72,4 @@ Gets the current time in ms.
 Gets the total `duration` the timer is running for in ms.
 
 ### `timer.status`
-Gets the current status of the timer as a string: `running`, `paused` or `stopped`.
+Gets the current status of the timer as a string: `running`, `paused`, `stopped` or `restarted`.

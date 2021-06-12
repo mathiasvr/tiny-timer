@@ -74,6 +74,14 @@ test('pause and resume', (t) => {
   timer.pause()
 })
 
+test('restarted', (t) => {
+  const timer = new Timer({ interval: 10 })
+  timer.start(50)
+  
+  timer.restart()
+  t.equal(timer.status, 'restarted')
+})
+
 test('state transition', (t) => {
   const timer = new Timer({ interval: 10 })
   t.equal(timer.status, 'stopped')

@@ -1,6 +1,6 @@
 import mitt, { EventType, Handler } from 'mitt'
 
-type Status = 'running' | 'paused' | 'stopped'
+type Status = 'running' | 'paused' | 'stopped' | 'restarted'
 
 class Timer {
   private _interval: number
@@ -45,6 +45,12 @@ class Timer {
     this._endTime += Date.now() - this._pauseTime
     this._pauseTime = 0
     this._changeStatus('running')
+  }
+
+  public restart () {
+    this._endTime += Date.now() + this._duration
+    this._pauseTime = 0
+    this._changeStatus('restarted')
   }
 
   private _changeStatus (status: Status) {
